@@ -32,4 +32,19 @@ describe Circa::Date do
     parts = Circa::Date.new("2001-11-00").valid_parts
     parts.must_equal({ :year => "2001", :month => "11" })
   end
+
+  it "should return a correct date given a correct date string" do
+    date = Circa::Date.new("2001-11-11").to_date
+    date.must_equal Date.new(2001, 11, 11)
+  end
+
+  it "should return a correct date given a partial date" do
+    date = Circa::Date.new("2001-11-00").to_date
+    date.must_equal Date.new(2001, 11, 01)
+  end
+
+  it "should return nil on to_date given a zero date" do
+    date = Circa::Date.new("0000-00-00").to_date
+    date.must_be_nil
+  end
 end
