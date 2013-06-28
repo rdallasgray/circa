@@ -19,12 +19,11 @@ module Circa
     end
 
     def to_date
-      return nil if (year = @year.to_i) == 0
-      month, day = [@month, @day].map do |part|
-        part = part.to_i
-        part > 0 ? part : 1
-      end
-      ::Date.new(year, month, day)
+      return nil if valid_parts.empty?
+      parts = [:year, :month, :day]
+      valid = valid_parts
+      args = parts.take_while {|p| valid[p] }.map {|p| valid[p].to_i }
+      ::Date.send(:new, *args)
     end
 
     private
