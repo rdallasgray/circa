@@ -1,7 +1,10 @@
 # encoding: UTF-8
 
+require_relative 'util'
+
 module Circa
   class Date
+    include Util
     attr_reader :valid_parts
 
     def initialize(date_string)
@@ -21,8 +24,7 @@ module Circa
     def to_date
       return nil if valid_parts.empty?
       parts = [:year, :month, :day]
-      valid = valid_parts
-      args = parts.take_while {|p| valid[p] }.map {|p| valid[p].to_i }
+      args = valid_parts_as_args(parts)
       ::Date.send(:new, *args)
     end
 

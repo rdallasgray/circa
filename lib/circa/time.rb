@@ -1,9 +1,11 @@
 # encoding: UTF-8
 
 require_relative 'date'
+require_relative 'util'
 
 module Circa
   class Time
+    include Util
 
     def initialize(time_string)
       parts = time_string.split(/T|\s/)
@@ -28,8 +30,7 @@ module Circa
 
     def to_time
       parts = [:year, :month, :day, :hour, :minute, :second]
-      valid = valid_parts
-      args = parts.take_while {|p| valid[p] }.map {|p| valid[p].to_i }
+      args = valid_parts_as_args(parts)
       ::DateTime.send(:new, *args)
     end
 
