@@ -1,9 +1,13 @@
+# encoding: UTF-8
+
 module Circa
   class Date
+    attr_reader :valid_parts
+
     def initialize(date_string)
-      @year = "0000"
-      @month = "00"
-      @day = "00"
+      @year = '0000'
+      @month = '00'
+      @day = '00'
       @valid_parts = {}
       unless validate(date_string)
         raise ArgumentError, "Invalid date: #{date_string}"
@@ -14,15 +18,11 @@ module Circa
       "#{@year}-#{@month}-#{@day}"
     end
 
-    def valid_parts
-      @valid_parts
-    end
-
     def to_date
-      year = @year.to_i
-      return nil if year == 0
-      month, day = [@month.to_i, @day.to_i].map do |num|
-        if num > 0 then num else 1 end
+      return nil if (year = @year.to_i) == 0
+      month, day = [@month, @day].map do |part|
+        part = part.to_i
+        part > 0 ? part : 1
       end
       ::Date.new(year, month, day)
     end
@@ -38,20 +38,16 @@ module Circa
 
     def set_year(matches)
       @year = matches[1]
-      if @year.to_i == 0
-        return matches[2].to_i == 0
-      else
-        @valid_parts[:year] = @year
-      end
+      set_dependent(@year, matches[2], :year)
     end
 
     def set_month(matches)
       @month = matches[2]
-      if @month.to_i == 0
-        return matches[3].to_i == 0
-      else
-        @valid_parts[:month] = @month
-      end
+      set_dependent(@month, matches[3], :month)
+    end
+
+    def set_dependent(a, b, name)
+      a.to_i > 0 ? @valid_parts[name] = a : b.to_i == 0
     end
 
     def set_day(matches)
