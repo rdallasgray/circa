@@ -6,6 +6,7 @@ require_relative 'util'
 module Circa
   class Time
     include Util
+    REGEX = /^([0-1][0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])Z?$/
 
     def initialize(time_string)
       parts = time_string.split(/T|\s/)
@@ -38,8 +39,7 @@ module Circa
 
     def validate(time_string)
       time_string.chomp!('Z')
-      re = /^([0-1][0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])?$/
-      matches = re.match(time_string)
+      matches = REGEX.match(time_string)
       set_time(matches) if matches
     end
 

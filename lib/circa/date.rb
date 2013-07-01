@@ -5,6 +5,7 @@ require_relative 'util'
 module Circa
   class Date
     include Util
+    REGEX = /^(\d{4})(?:-(0[0-9]|1[0-2])(?:-([0-2][0-9]|3[0-1])))$/
     attr_reader :valid_parts
 
     def initialize(date_string)
@@ -31,9 +32,8 @@ module Circa
     private
 
     def validate(date_string)
-      re = /^(\d{4})(?:-(0[0-9]|1[0-2])(?:-([0-2][0-9]|3[0-1])))$/
-      matches = re.match(date_string)
-      return false unless matches[0]
+      matches = REGEX.match(date_string)
+      return false if matches.nil?
       set_year(matches) && set_month(matches) && set_day(matches)
     end
 

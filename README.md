@@ -1,6 +1,6 @@
 # Circa
 
-TODO: Write a gem description
+Use MySQL-style partial dates in Rails.
 
 ## Installation
 

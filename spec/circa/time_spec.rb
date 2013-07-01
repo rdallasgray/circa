@@ -1,7 +1,7 @@
 # encoding: UTF-8
 
 require 'minitest/spec'
-require_relative '../lib/circa/time'
+require_relative '../../lib/circa/time'
 
 describe Circa::Time do
 
