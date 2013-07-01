@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = Circa::VERSION
   spec.authors       = ['Robert Dallas Gray']
   spec.email         = ['mail@robertdallasgray.com']
-  spec.description   = %q{Make MySQL-style partial dates compatible with Rails}
-  spec.summary       = %q{Make MySQL-style partial dates compatible with Rails}
+  spec.description   = %q{Utilities for working with MySQL-style partial dates}
+  spec.summary       = %q{Utilities for working with MySQL-style partial dates}
   spec.homepage      = ''
   spec.license       = 'MIT'
 
