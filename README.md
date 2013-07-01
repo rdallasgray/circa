@@ -2,28 +2,17 @@
 
 Use MySQL-style partial dates in Rails.
 
+```ruby
+$ date = circa('2001-01-00')
+$ date.valid_parts
+{ year: '2001', month: '01' }
+$ date.to_date.to_s
+'2001-01-01'
+$ time = circa('2001-01-11 13:30:00')
+$ time.valid_parts
+{ year: '2001', month: '01', day: '11', hour: '13', minute: '30', second: '00' }
+```
+
 ## Installation
 
-Add this line to your application's Gemfile:
-
-    gem 'circa'
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
     $ gem install circa
-
-## Usage
-
-TODO: Write usage instructions here
-
-## Contributing
-
-1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
