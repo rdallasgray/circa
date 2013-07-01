@@ -4,7 +4,7 @@ require_relative 'date'
 require_relative 'util'
 
 module Circa
-  # Manage partial times
+  # Manage partial times.
   class Time
     include Util
 
