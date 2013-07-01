@@ -1,6 +1,6 @@
 # Circa
 
-Use MySQL-style partial dates in Rails.
+Use MySQL-style partial dates in Rails (and elsewhere).
 
 ```ruby
 $ date = circa('2001-01-00')
