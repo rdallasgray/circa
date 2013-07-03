@@ -1,5 +1,6 @@
 # encoding: UTF-8
 
+require 'date'
 require_relative 'util'
 
 module Circa

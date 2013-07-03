@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 require 'circa/version'
 require 'circa/date'
 require 'circa/time'
