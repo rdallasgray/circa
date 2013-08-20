@@ -1,7 +1,7 @@
 # encoding: UTF-8
 
-require_relative 'date'
-require_relative 'util'
+require 'circa/date'
+require 'circa/util'
 
 module Circa
   class Time

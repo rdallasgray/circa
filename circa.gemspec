@@ -22,5 +22,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake"
   spec.add_development_dependency "m", "~> 1.3.1"
   spec.add_development_dependency "guard", ">= 1.8"
-  spec.add_development_dependency "guard-minitest"
+  spec.add_development_dependency "pry"
+  spec.add_development_dependency "pry-doc"
 end
